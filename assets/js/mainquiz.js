@@ -59,11 +59,66 @@ const maxQuestion = 4;
 
 // start game func
 
-function startGame() {};
+function startGame() {
+    // set our vars to initial vals
+    questionCount = 0;
+    score = 0;
+    timer = 120;
+
+    // timerInterval func for countdown
+    let timerInterval = setInterval(function () {
+        timer--;
+        timerText.textContent = timer;
+
+        // if conditioning to end game when timer reaches 0
+        if (timer <= 0) {
+            clearInterval(timerInterval);
+            localStorage.setItem('recentScore', score);
+            return window.location.assign('./finScreen.html')
+        }
+    }, 1000);
+
+    // unpack questions array to update our questionsLeft var then getnewquestions
+    questionsLeft = [...questions];
+    getNewQuestion();
+};
 
 // get new question func (this is random every play)
 
-function getNewQuestion() {};
+function getNewQuestion() {
+    // when there are no questions left score will be stored and user is sent to end screen
+    if(questionsLeft.length === 0 || questionCount > maxQuestions) {
+        localStorage.setItem('recentScore', score);
+        return window.location.assign('./finScreen.html');
+    };
+
+    questionCount++;
+
+    // progressBar setup 
+
+    // innerText will set a string that shows that we are on Question "blank" (${} will insert the var in the string) of our maxQuestions var
+    progressBar.innerText = `Question ${questionCount} of ${maxQuestions}`;
+    // this will gradually increase the progress bar style using questionCount divided by maxQuestions times 100% (sinc we have 4 questions this will go in 25% increments)
+    progressBarFull.style.width = `${(questionCount/maxQuestions) * 100}%`;
+
+    // end progressBar setup
+
+    // constant var for getting out random questionIndex (each time you click play the questions will be in random order)
+    const questionIndex = Math.floor(Math.random() * questionsLeft.length);
+    currentQuestion = questionsLeft[questionIndex];
+    question.innerText = currentQuestion.question
+
+    // for each choice we make this function will check which choice and which number in the dataset it was
+    choices.forEach(choice => {
+        const number = choice.dataset['number']
+        choice.innerText = currentQuestion['choice' + number]
+    });
+
+    // this will remove whichever question we answered from our array
+    questionsLeft.splice(questionIndex, 1);
+
+    goodAns = true;
+};
 
 // choices function
 
