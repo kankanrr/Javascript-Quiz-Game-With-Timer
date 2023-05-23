@@ -50,12 +50,12 @@ var questions = [
         choice4: 'A Book',
         answer: 3
     },
-];
+]
 
 // const vars for how many q's and score per q
 
 const scorePoints = 100;
-const maxQuestion = 4;
+const maxQuestions = 4;
 
 // start game func
 
@@ -66,7 +66,7 @@ function startGame() {
     timer = 120;
 
     // timerInterval func for countdown
-    let timerInterval = setInterval(function () {
+    var timerInterval = setInterval(function () {
         timer--;
         timerText.textContent = timer;
 
