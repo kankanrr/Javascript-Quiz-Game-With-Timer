@@ -123,13 +123,39 @@ function getNewQuestion() {
 // choices function
 
 choices.forEach(choice => {
+    // e is short for event | => is a shorter way to create a func
+    choice.addEventListener('click', e => {
+        // if goodAns === false then return and player gets 0 points
+        if (!goodAns) return
 
+        goodAns = false;
+        const slctChoice = e.target;
+        const slctAnswer = slctChoice.dataset['number'];
+
+        // based on if the user selected answer is correct or incorrect this will decide
+        var classApply = slctAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+
+        // if the class applied is correct the score will increase by our set var of 100 pts
+        if(classApply === 'correct') {
+            increaseScore(scorePoints);
+        }
+
+        // this will add 'correct' or 'incorrect' class to our selected choice var which will decide if user ans is right or wrong
+        slctChoice.parentElement.classList.add(classApply);
+
+        // this sill set a short 1 sec timeout that will remove the 'correct' or 'incorrect' class and then it will get a new question to continue the quiz
+        setTimeout(() => {
+            slctChoice.parentElement.classList.remove(classApply);
+            getNewQuestion();
+        }, 1000);
+    });
 });
 
 // increase score function
 
 function increaseScore (num) {
-
+    score += num;
+    scoreText.innerText = score;
 };
 
 // Initialization
