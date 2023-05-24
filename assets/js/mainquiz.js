@@ -138,6 +138,8 @@ choices.forEach(choice => {
         // if the class applied is correct the score will increase by our set var of 100 pts
         if(classApply === 'correct') {
             increaseScore(scorePoints);
+        } else if (classApply === 'incorrect') {
+            timer = timer - 10;
         }
 
         // this will add 'correct' or 'incorrect' class to our selected choice var which will decide if user ans is right or wrong

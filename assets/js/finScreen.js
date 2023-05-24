@@ -31,7 +31,7 @@ saveHighScore = e => {
     // we then push the highscores into our score obj array
     highScores.push(score);
 
-    // they are then sorted in a, b format aka username:score
+    // they are then sorted from less recent to most recent
     highScores.sort((a,b) => {
         return b.score - a.score
     });
