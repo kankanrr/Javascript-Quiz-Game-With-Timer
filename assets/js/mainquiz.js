@@ -19,35 +19,35 @@ var timer = 0;
 
 var questions = [
     {
-        question: 'What is 1+1 ?',
-        choice1: '2',
-        choice2: '10',
-        choice3: 'two',
-        choice4: '21',
+        question: 'What is Javascript ?',
+        choice1: 'A programming language',
+        choice2: 'A movie script',
+        choice3: 'A Hard Drive',
+        choice4: 'Software',
         answer: 1
     },
     {
-        question: 'What is the Captiol of the USA ?',
-        choice1: 'Nebraska',
-        choice2: 'Los Angeles',
-        choice3: 'Orange',
-        choice4: 'Washington D.C.',
+        question: 'Which of the following is an example of an array ?',
+        choice1: 'var items = ();',
+        choice2: 'let items = {};',
+        choice3: 'const items;',
+        choice4: 'var items = [];',
         answer: 4
     },
     {
-        question: 'What is Kamen Rider ?',
-        choice1: 'A Movie',
-        choice2: 'A TV Show',
-        choice3: 'A Short Film',
-        choice4: 'Some Super Hero',
+        question: 'What is the correct way to write a function ?',
+        choice1: 'function ();',
+        choice2: 'function doSomething() {};',
+        choice3: 'function = ();',
+        choice4: 'function doSomething [] {};',
         answer: 2
     },
     {
-        question: 'What is Kingdom Hearts ?',
-        choice1: 'A Platformer Game',
-        choice2: 'A Show',
-        choice3: 'A Disney Licensed RPG',
-        choice4: 'A Book',
+        question: 'What is a var ?',
+        choice1: 'A Variance',
+        choice2: 'An Attribute',
+        choice3: 'A Variable',
+        choice4: 'An Element',
         answer: 3
     },
 ]
